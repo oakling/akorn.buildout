@@ -1,0 +1,30 @@
+Installation
+============
+
+Setup server
+
+TODO
+
+Install Python
+--------------
+
+TODO
+
+Create A VirtualEnv
+-------------------
+
+~/python/2.7.3/bin/virtualenv my_test_instance
+cd my_test_instance
+source bin/activate
+easy_install zc.buildout
+buildout init
+
+Download buildout
+-----------------
+
+TODO
+
+Run the buildout
+----------------
+
+buildout
