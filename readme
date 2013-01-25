@@ -2,29 +2,75 @@ Installation
 ============
 
 Setup server
+------------
 
-TODO
+sudo apt-get install rabbitmq-server
+sudo apt-get install openssh-server
+sudo apt-get install openssh-client
+sudo apt-get install python-setuptools
+sudo apt-get install python-dev
+sudo apt-get install build-essential
+sudo apt-get install libxslt-dev
+sudo apt-get install couchdb
+sudo apt-get install git
 
 Install Python
 --------------
 
-TODO
+cd ~/Downloads
+wget http://www.python.org/ftp/python/2.7.3/Python-2.7.3.tgz
+tar zxfv Python-2.7.3.tgz
+cd Python-2.7.3
+configure --prefix=/home/username/python/2.7.3
+make
+make install
+cd ..
+wget http://python-distribute.org/distribute_setup.py
+~/python/2.7.3/bin/python distribute_setup.py
+~/python/2.7.3/bin/easy_install virtualenv
 
-Create A VirtualEnv
--------------------
+Setup the buildout cache
+------------------------
 
-~/python/2.7.3/bin/virtualenv my_test_instance
-cd my_test_instance
-source bin/activate
-easy_install zc.buildout
-buildout init
+cd ~
+mkdir .buildout
+cd .buildout
+mkdir eggs
+mkdir downloads
+mkdir extends
+
+Write the buildout default file
+-------------------------------
+
+filename: default.cfg
+Content of the file:
+[buildout]
+eggs-directory = /home/username/.buildout/eggs
+download-cache = /home/username/.buildout/downloads
+extends-cache = /home/username/.buildout/extends
 
 Download buildout
 -----------------
 
-TODO
+cd ~
+mkdir sites
+cd sites
+mkdir my_test_instance
+git clone git://github.com/oakling/akorn.buildout.git ./
+
+Create A VirtualEnv
+-------------------
+
+~/python/2.7.3/bin/virtualenv .
+source bin/activate
+easy_install zc.buildout
+buildout init
 
 Run the buildout
 ----------------
 
-buildout
+buildout development.cfg
+
+Start up the server
+-------------------
+django runserver
