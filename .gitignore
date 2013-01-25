@@ -1,0 +1,15 @@
+# ignore the config file created by buildout init
+buildout.cfg
+
+# ignore the instance folders
+bin
+eggs
+include
+lib
+parts
+src
+
+# ignore the buildout architecture
+.installed.cfg
+.mr.developer.cfg
+
