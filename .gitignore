@@ -13,3 +13,6 @@ src
 .installed.cfg
 .mr.developer.cfg
 
+# mac files
+.DS_Store
+

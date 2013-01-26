@@ -69,7 +69,7 @@ buildout init
 Run the buildout
 ----------------
 
-buildout development.cfg
+buildout -c development.cfg
 
 Start up the server
 -------------------
