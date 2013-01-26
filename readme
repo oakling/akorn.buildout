@@ -12,8 +12,10 @@ sudo apt-get install python-dev
 sudo apt-get install build-essential
 sudo apt-get install libxslt-dev
 sudo apt-get install couchdb
+sudo apt-get install python-couchdb
 sudo apt-get install libsqlite3-dev
 sudo apt-get install git
+sudo apt-get install curl
 
 Install Python
 --------------
@@ -71,6 +73,17 @@ Run the buildout
 ----------------
 
 buildout -c development.cfg
+
+Setup the Couch DB
+------------------
+
+sudo update-rc.d couchdb enable
+sudo service couchdb start
+curl -X PUT http://localhost:5984/journals
+curl -X PUT http://localhost:5984/store
+cd src/akorn_search/akorn_search/dumps
+couchdb-load --input=~/journals-YY-MM-DD.couchdb http://localhost:5984/journals
+couchdb-load --input=~/store-YY-MM-DD.couchdb http://localhost:5984/store
 
 Start up the server
 -------------------
