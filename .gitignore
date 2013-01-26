@@ -3,6 +3,7 @@ buildout.cfg
 
 # ignore the instance folders
 bin
+develop-eggs
 eggs
 include
 lib
