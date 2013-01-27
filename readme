@@ -85,6 +85,20 @@ cd src/akorn_search/akorn_search/dumps
 couchdb-load --input=~/journals-YY-MM-DD.couchdb http://localhost:5984/journals
 couchdb-load --input=~/store-YY-MM-DD.couchdb http://localhost:5984/store
 
+# You need to update your username and password details in local_settings.py
+
+Setup the Sqlite DB
+-------------------
+
+# update the path to the db in settings.py
+django syncdb
+
 Start up the server
 -------------------
 django runserver
+
+Running the test suite
+----------------------
+
+django test akorn_search
+
