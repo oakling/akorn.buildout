@@ -4,18 +4,7 @@ Installation
 Setup server
 ------------
 
-sudo apt-get install rabbitmq-server
-sudo apt-get install openssh-server
-sudo apt-get install openssh-client
-sudo apt-get install python-setuptools
-sudo apt-get install python-dev
-sudo apt-get install build-essential
-sudo apt-get install libxslt-dev
-sudo apt-get install couchdb
-sudo apt-get install python-couchdb
-sudo apt-get install libsqlite3-dev
-sudo apt-get install git
-sudo apt-get install curl
+sudo apt-get install $(cat ubuntu_requirements)
 
 Install Python
 --------------
