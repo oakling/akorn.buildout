@@ -71,8 +71,8 @@ sudo service couchdb start
 curl -X PUT http://localhost:5984/journals
 curl -X PUT http://localhost:5984/store
 cd src/akorn_search/akorn_search/dumps
-couchdb-load --input=~/journals-YY-MM-DD.couchdb http://localhost:5984/journals
-couchdb-load --input=~/store-YY-MM-DD.couchdb http://localhost:5984/store
+couchdb-load --input=journals-YY-MM-DD.couchdb http://localhost:5984/journals
+couchdb-load --input=store-YY-MM-DD.couchdb http://localhost:5984/store
 
 # You need to update your username and password details in local_settings.py
 
