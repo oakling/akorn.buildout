@@ -86,6 +86,7 @@ Setup the Sqlite DB
 # create the db folder before running syncdb
 cd ..
 mkdir db
+#you will be asked to create a super user when you syncdb
 django syncdb
 
 Start up the server
