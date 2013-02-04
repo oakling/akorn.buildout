@@ -49,6 +49,7 @@ cd ~
 mkdir sites
 cd sites
 mkdir my_test_instance
+cd my_test_instance
 git clone https://github.com/oakling/akorn.buildout.git ./
 
 Create A VirtualEnv
