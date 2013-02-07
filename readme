@@ -34,6 +34,7 @@ mkdir extends
 
 Write the buildout default file
 -------------------------------
+#this file lives in .buildout folder which is in /home/username
 
 filename: default.cfg
 Content of the file:
