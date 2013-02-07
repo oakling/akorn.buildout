@@ -53,6 +53,11 @@ mkdir my_test_instance
 cd my_test_instance
 git clone https://github.com/oakling/akorn.buildout.git ./
 
+configure git on the local machine
+----------------------------------
+git --global user.email "email address in quotes"
+git --global user.name "name in quotes"
+
 Create A VirtualEnv
 -------------------
 
