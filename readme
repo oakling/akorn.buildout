@@ -55,8 +55,8 @@ git clone https://github.com/oakling/akorn.buildout.git ./
 
 configure git on the local machine
 ----------------------------------
-git --global user.email "email address in quotes"
-git --global user.name "name in quotes"
+git config --global user.email "email address in quotes"
+git config --global user.name "name in quotes"
 
 Create A VirtualEnv
 -------------------
