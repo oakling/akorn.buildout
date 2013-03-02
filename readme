@@ -77,7 +77,8 @@ script.  Perhaps use pip to install version 1.7.1 instead: i.e.
 
 ~/python/2.7.3/bin/virtualenv .
 source bin/activate
-easy_install zc.buildout
+pip install zc.buildout
+pip install distribute
 buildout init
 
 Run the buildout
