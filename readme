@@ -96,10 +96,11 @@ curl -X PUT http://localhost:5984/store
 cd src/akorn_search/akorn_search/dumps
 #change the names of the 2 files in /dumps to be .couchdb
 #update the following two lines so that they have the same name as the couchdb databases
-couchdb-load --input=journals-YY-MM-DD.couchdb http://localhost:5984/journals
-couchdb-load --input=store-YY-MM-DD.couchdb http://localhost:5984/store
+couchdb-load --input=journals-DD-MM-YY.couchdb http://localhost:5984/journals
+couchdb-load --input=store-DD-MM-YY.couchdb http://localhost:5984/store
 
 # You need to update your username and password details in local_settings.py(found in src/akorn_search/akorn_search) 
+#Putting in a user name and password didn't work. I used blank for username and password and it worked
 # Create local_setting.py if it doesn't exist, use local_settings_default.py as an example.
 
 Setup the Sqlite DB
