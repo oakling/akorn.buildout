@@ -1,3 +1,5 @@
+beat.dat
+
 # ignore the config file created by buildout init
 buildout.cfg
 
