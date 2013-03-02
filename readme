@@ -9,6 +9,15 @@ sudo apt-get install $(cat ubuntu_requirements)
 Install Python
 --------------
 
+On some ubuntus (not sure which, but certainly on 12.10), make sure
+you have done:
+
+sudo apt-get build-dep python
+
+before the building python, as below (and possibly 'sudo apt-get
+install build-essentials' --- not sure whether the previous command
+automatically does this).
+
 cd ~/Downloads
 wget http://www.python.org/ftp/python/2.7.3/Python-2.7.3.tgz
 tar zxfv Python-2.7.3.tgz
@@ -55,15 +64,21 @@ git clone https://github.com/oakling/akorn.buildout.git ./
 
 configure git on the local machine
 ----------------------------------
-git --global user.email "email address in quotes"
-git --global user.name "name in quotes"
+git config --global user.email "email address in quotes"
+git config --global user.name "name in quotes"
 
 Create A VirtualEnv
 -------------------
 
+The latest versions of zc.buildout break the development.cfg buildout
+script.  Perhaps use pip to install version 1.7.1 instead: i.e.  
+'pip install zc.buildout==1.7.1'
+
+
 ~/python/2.7.3/bin/virtualenv .
 source bin/activate
-easy_install zc.buildout
+pip install zc.buildout
+pip install distribute
 buildout init
 
 Run the buildout
@@ -103,5 +118,5 @@ django runserver
 Running the test suite
 ----------------------
 
-django test akorn_search
+django test search
 
