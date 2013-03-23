@@ -5,6 +5,10 @@ python-setuptools
 python-dev
 build-essential
 libxslt-dev
+xsltproc
+cdbs
+erlang-nox
+erlang-src
 couchdb
 python-couchdb
 libsqlite3-dev
