@@ -113,5 +113,8 @@ django runserver
 Running the test suite
 ----------------------
 
+nose akorn.celery
+nose akorn.scrapers
+
 django test search
 
