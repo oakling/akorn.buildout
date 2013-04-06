@@ -1,3 +1,5 @@
+build-dep
+python
 rabbitmq-server
 openssh-server
 openssh-client
