@@ -4,117 +4,121 @@ Installation
 Setup server
 ------------
 
+```bash
 sudo apt-get install $(cat ubuntu_requirements)
+```
 
 Install Python
 --------------
 
-On some ubuntus (not sure which, but certainly on 12.10), make sure
-you have done:
-
-sudo apt-get build-dep python
-
-before the building python, as below (and possibly 'sudo apt-get
-install build-essentials' --- not sure whether the previous command
-automatically does this).
-
+```bash
 cd ~/Downloads
 wget http://www.python.org/ftp/python/2.7.3/Python-2.7.3.tgz
 tar zxfv Python-2.7.3.tgz
 cd Python-2.7.3
-./configure --prefix=/home/username/python/2.7.3
+./configure --prefix=/home/<username>/python/2.7.3
 make
 make install
 cd ..
 wget http://python-distribute.org/distribute_setup.py
 ~/python/2.7.3/bin/python distribute_setup.py
 ~/python/2.7.3/bin/easy_install virtualenv
+```
 
 Setup the buildout cache
 ------------------------
 
-cd ~
-mkdir .buildout
-cd .buildout
+```bash
+mkdir ~/.buildout
+cd ~/.buildout
 mkdir eggs
 mkdir downloads
 mkdir extends
+```
 
 Write the buildout default file
 -------------------------------
-#this file lives in .buildout folder which is in /home/username
-
-filename: default.cfg
-Content of the file:
-[buildout]
-eggs-directory = /home/username/.buildout/eggs
-download-cache = /home/username/.buildout/downloads
-extends-cache = /home/username/.buildout/extends
+```bash
+echo "[buildout]
+eggs-directory = /home/<username>/.buildout/eggs
+download-cache = /home/<username>/.buildout/downloads
+extends-cache = /home/<username>/.buildout/extends" >> ~/.buildout/default.cfg
+```
 
 Download buildout
 -----------------
 
-cd ~
-mkdir sites
-cd sites
-mkdir my_test_instance
-cd my_test_instance
+```bash
+mkdir -p ~/sites/<my_test_instance>
+cd ~/sites/<my_test_instance>
 git clone https://github.com/oakling/akorn.buildout.git ./
+```
 
-configure git on the local machine
+Configure git on the local machine
 ----------------------------------
-git config --global user.email "email address in quotes"
+Your email address should be the same one as for your github account.
+```bash
+git config --global user.email "my@address.com"
 git config --global user.name "name in quotes"
+```
 
 Create A VirtualEnv
 -------------------
 
+```bash
 ~/python/2.7.3/bin/virtualenv .
 source bin/activate
 pip install zc.buildout
 pip install distribute
 buildout init
+```
 
 Run the buildout
 ----------------
 
+```bash
 buildout -c development.cfg
+```
 
 Setup the Couch DB
 ------------------
 
+```bash
 sudo update-rc.d couchdb enable
 sudo service couchdb start
 curl -X PUT http://localhost:5984/journals
 curl -X PUT http://localhost:5984/store
 cd src/akorn_search/akorn_search/dumps
-#change the names of the 2 files in /dumps to be .couchdb
-#update the following two lines so that they have the same name as the couchdb databases
-couchdb-load --input=journals-DD-MM-YY.couchdb http://localhost:5984/journals
-couchdb-load --input=store-DD-MM-YY.couchdb http://localhost:5984/store
-
-# You need to update your username and password details in local_settings.py(found in src/akorn_search/akorn_search) 
-#Putting in a user name and password didn't work. I used blank for username and password and it worked
-# Create local_setting.py if it doesn't exist, use local_settings_default.py as an example.
+couchdb-load --input=<journals-DD-MM-YY> http://localhost:5984/journals
+couchdb-load --input=<store-DD-MM-YY> http://localhost:5984/store
+```
 
 Setup the Sqlite DB
 -------------------
 
-# create the db folder before running syncdb
+You will be asked to create a super user when you first run syncdb. This is the user you can then log into the django admin with.
+
+**TODO: Clariy path required**
+
+```bash
 cd ..
 mkdir db
-#you will be asked to create a super user when you syncdb
 django syncdb
+```
 
 Start up the server
 -------------------
+
+```bash
 django runserver
+```
 
 Running the test suite
 ----------------------
 
+```bash
 nose akorn.celery
 nose akorn.scrapers
 
 django test search
-
+```
