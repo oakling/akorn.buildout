@@ -122,3 +122,64 @@ nose akorn.scrapers
 
 django test search
 ```
+
+Maintaining the servers
+=======================
+
+Akorn is currently deployed on 3 servers:
+* Web server (web.private | akorn.org)
+* Couchdb server (couchdb.private)
+* Celery server (celery1.private)
+
+If HTTP requests to akorn.org are slow or failing, then restart the Web server.
+
+If web pages are displaying, but searches produce no results or take a long time, then restart the Couchdb server.
+
+If new articles are not being scraped, then restart the Celery server.
+
+If in doubt, go nuts! Just restart everything.
+
+Accessing the servers
+---------------------
+
+First you need to request an SSH key, once you have received
+the key you need to add it to your key chain.
+
+Move the key into a sensible place, add the key to your SSH
+config, and ensure your SSH config has the correct permissions.
+```bash
+mv /path/to/key.pem ~/.ssh/akorn.pem
+echo IdentityFile ~/.ssh/akorn.pem >> ~/.ssh/config
+chmod 0600 ~/.ssh/config
+```
+
+Test your setup by logging into the web server as ubuntu.
+```bash
+ssh ubuntu@akorn.org
+```
+
+Restarting web server
+---------------------
+```bash
+ssh ubuntu@akorn.org
+sudo service django-akorn restart
+```
+
+Restarting couchdb server
+-------------------------
+```bash
+ssh ubuntu@akorn.org
+ssh ubuntu@couchdb.private
+sudo service couchdb restart
+sudo service couchdb-lucene restart
+```
+_Note: The chained SSH commands are to avoid having to setup 3 shared SSH keys._
+
+Restarting celery server
+------------------------
+```bash
+ssh ubuntu@akorn.org
+ssh ubuntu@celery1.private
+sudo service celeryd restart
+```
+_Note: The chained SSH commands are to avoid having to setup 3 shared SSH keys._
