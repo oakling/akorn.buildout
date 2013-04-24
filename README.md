@@ -150,10 +150,10 @@ config, and ensure your SSH config has the correct permissions.
 ```bash
 mv /path/to/key.pem ~/.ssh/akorn.pem
 echo IdentityFile ~/.ssh/akorn.pem >> ~/.ssh/config
-chmod 0600 ~/.ssh/config
+chmod 0600 ~/.ssh/akorn.pem
 ```
 
-Test your setup by logging into the web server as ubuntu.
+Test your setup by loggig into the web server as ubuntu.
 ```bash
 ssh ubuntu@akorn.org
 ```
