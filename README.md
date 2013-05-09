@@ -1,6 +1,28 @@
 Installation
 ============
 
+Install and Configure git on the local machine
+----------------------------------------------
+Install Git
+```bash
+sudo apt-get install git
+```
+
+Your email address should be the same one as for your github account.
+```bash
+git config --global user.email "my@address.com"
+git config --global user.name "name in quotes"
+```
+
+Download buildout
+-----------------
+
+```bash
+mkdir -p ~/sites/<my_test_instance>
+cd ~/sites/<my_test_instance>
+git clone https://github.com/oakling/akorn.buildout.git ./
+```
+
 Setup server
 ------------
 
@@ -43,23 +65,6 @@ echo "[buildout]
 eggs-directory = /home/<username>/.buildout/eggs
 download-cache = /home/<username>/.buildout/downloads
 extends-cache = /home/<username>/.buildout/extends" >> ~/.buildout/default.cfg
-```
-
-Download buildout
------------------
-
-```bash
-mkdir -p ~/sites/<my_test_instance>
-cd ~/sites/<my_test_instance>
-git clone https://github.com/oakling/akorn.buildout.git ./
-```
-
-Configure git on the local machine
-----------------------------------
-Your email address should be the same one as for your github account.
-```bash
-git config --global user.email "my@address.com"
-git config --global user.name "name in quotes"
 ```
 
 Create A VirtualEnv
