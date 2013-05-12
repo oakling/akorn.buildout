@@ -23,6 +23,17 @@ cd ~/sites/<my_test_instance>
 git clone https://github.com/oakling/akorn.buildout.git ./
 ```
 
+Install newer version of java
+-----------------------------
+
+```bash
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java7-installer
+```
+
+It will ask you to accept the license
+
 Setup server
 ------------
 
@@ -100,15 +111,6 @@ couchdb-load --input=<store-DD-MM-YY> http://localhost:5984/store
 
 Setup couchdb-lucene
 --------------------
-
-Get Maven and newer version of java:
-```bash
-sudo add-apt-repository ppa:webupd8team/java
-sudo apt-get update
-sudo apt-get install git-core maven2 oracle-java7-installer
-```
-
-The Oracle installer will ask you some questions, just select OK for all.
 
 Get the couchdb-lucene source, build with maven, unpack the build to /opt/ and rename it:
 ```bash
