@@ -81,6 +81,12 @@ extends-cache = /home/<username>/.buildout/extends" >> ~/.buildout/default.cfg
 Create A VirtualEnv
 -------------------
 
+Change to the right directory first
+
+```bash
+cd ~/sites/<my_test_instance>
+```
+
 ```bash
 ~/python/2.7.3/bin/virtualenv .
 source bin/activate
