@@ -17,3 +17,5 @@ curl
 maven2
 libnspr4-dev
 libbz2-dev
+libmozjs-dev
+libicu-dev
