@@ -9,8 +9,6 @@ xsltproc
 cdbs
 erlang-nox
 erlang-src
-couchdb
-python-couchdb
 libsqlite3-dev
 git
 curl
