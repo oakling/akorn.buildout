@@ -1,6 +1,39 @@
 Installation
 ============
 
+Install and Configure git on the local machine
+----------------------------------------------
+Install Git
+```bash
+sudo apt-get install git
+```
+
+Your email address should be the same one as for your github account.
+```bash
+git config --global user.email "my@address.com"
+git config --global user.name "name in quotes"
+```
+
+Download buildout
+-----------------
+
+```bash
+mkdir -p ~/sites/<my_test_instance>
+cd ~/sites/<my_test_instance>
+git clone https://github.com/oakling/akorn.buildout.git ./
+```
+
+Install newer version of java
+-----------------------------
+
+```bash
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java7-installer
+```
+
+It will ask you to accept the license
+
 Setup server
 ------------
 
@@ -45,25 +78,14 @@ download-cache = /home/<username>/.buildout/downloads
 extends-cache = /home/<username>/.buildout/extends" >> ~/.buildout/default.cfg
 ```
 
-Download buildout
------------------
-
-```bash
-mkdir -p ~/sites/<my_test_instance>
-cd ~/sites/<my_test_instance>
-git clone https://github.com/oakling/akorn.buildout.git ./
-```
-
-Configure git on the local machine
-----------------------------------
-Your email address should be the same one as for your github account.
-```bash
-git config --global user.email "my@address.com"
-git config --global user.name "name in quotes"
-```
-
 Create A VirtualEnv
 -------------------
+
+Change to the right directory first
+
+```bash
+cd ~/sites/<my_test_instance>
+```
 
 ```bash
 ~/python/2.7.3/bin/virtualenv .
@@ -91,6 +113,67 @@ curl -X PUT http://localhost:5984/store
 cd src/akorn_search/akorn_search/dumps
 couchdb-load --input=<journals-DD-MM-YY> http://localhost:5984/journals
 couchdb-load --input=<store-DD-MM-YY> http://localhost:5984/store
+```
+
+Setup couchdb-lucene
+--------------------
+
+Get the couchdb-lucene source, build with maven, unpack the build to /opt/ and rename it:
+```bash
+git clone git://github.com/rnewson/couchdb-lucene.git
+cd couchdb-lucene
+mvn
+sudo unzip target/couchdb-lucene-<version>.zip -d /opt/
+sudo mv /opt/couchdb-lucene-<version> /opt/couchdb-lucene
+```
+
+Add the following to /etc/couchdb/local.ini:
+```
+; increase the timeout from 5 seconds.
+os_process_timeout=60000
+
+[external]
+fti=/usr/bin/python /opt/couchdb-lucene/tools/couchdb-external-hook.py
+
+[httpd_db_handlers]
+_fti = {couch_httpd_external, handle_external_req, <<"fti">>}
+```
+
+Add a design document to couchdb that hooks up to couchdb-lucene and indexes text. The easiest way
+is using Futon (http://127.0.0.1:5984/_utils). Select the database (store), select
+"design documents" in the drop down. Create a document and name it "_design/lucene". Add a field
+"fulltext" to the document, an example to index all document titles:
+
+```js
+{
+    "by_title": {
+        "index": "function(doc) { var ret=new Document(); ret.add(doc.title,
+            {'store':'yes'});
+            ret.add(doc.journal_id, {'field':'journalID'}); return ret; }"
+    },
+    "by_journal_id": {
+        "index": "function(doc) { var ret=new Document();
+            ret.add(doc.journal_id); return ret; }"
+    }
+}
+```
+
+Make sure the design document is saved and restart the database:
+```bash
+sudo service couchdb restart
+```
+
+Edit the DAEMON variable in the supplied init script to point to your
+installation directory, e.g. (DAEMON=/opt/couchdb-lucene/bin/run):
+```bash
+sudo vim /opt/couchdb-lucene/tools/etc/init.d/couchdb-lucene/couchdb-lucene
+```
+
+Copy init script, start couchdb-lucene, and then ensure it starts up on reboot: 
+```bash
+sudo ln -s /opt/couchdb-lucene/tools/etc/init.d/couchdb-lucene/couchdb-lucene /etc/init.d/
+sudo service couchdb-lucene start
+sudo update-rc.d -f couchdb-lucene defaults
 ```
 
 Setup the Sqlite DB

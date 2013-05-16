@@ -1,16 +1,20 @@
 beat.dat
+*.pyc
 
 # ignore the config file created by buildout init
 buildout.cfg
+README.rst
 
 # ignore the instance folders
 bin
+build
 develop-eggs
 eggs
 include
 lib
 parts
 src
+var
 
 # ignore the buildout architecture
 .installed.cfg

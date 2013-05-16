@@ -1,5 +1,4 @@
 python
-rabbitmq-server
 openssh-server
 openssh-client
 python-setuptools
@@ -10,8 +9,11 @@ xsltproc
 cdbs
 erlang-nox
 erlang-src
-couchdb
-python-couchdb
 libsqlite3-dev
 git
 curl
+maven2
+libnspr4-dev
+libbz2-dev
+libmozjs-dev
+libicu-dev
