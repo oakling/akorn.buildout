@@ -1,4 +1,5 @@
 beat.dat
+*~
 *.pyc
 
 # ignore the config file created by buildout init
