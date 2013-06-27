@@ -111,8 +111,8 @@ sudo service couchdb start
 curl -X PUT http://localhost:5984/journals
 curl -X PUT http://localhost:5984/store
 cd src/akorn_search/akorn_search/dumps
-couchdb-load --input=<journals-DD-MM-YY> http://localhost:5984/journals
-couchdb-load --input=<store-DD-MM-YY> http://localhost:5984/store
+couchdb-load --input=journals.couchdump http://localhost:5984/journals
+couchdb-load --input=store.couchdump http://localhost:5984/store
 ```
 
 Setup couchdb-lucene
