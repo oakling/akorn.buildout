@@ -118,27 +118,6 @@ couchdb-load --input=store.couchdump http://localhost:5984/store
 Setup couchdb-lucene
 --------------------
 
-Get the couchdb-lucene source, build with maven, unpack the build to /opt/ and rename it:
-```bash
-git clone git://github.com/rnewson/couchdb-lucene.git
-cd couchdb-lucene
-mvn
-sudo unzip target/couchdb-lucene-<version>.zip -d /opt/
-sudo mv /opt/couchdb-lucene-<version> /opt/couchdb-lucene
-```
-
-Add the following to /etc/couchdb/local.ini:
-```
-; increase the timeout from 5 seconds.
-os_process_timeout=60000
-
-[external]
-fti=/usr/bin/python /opt/couchdb-lucene/tools/couchdb-external-hook.py
-
-[httpd_db_handlers]
-_fti = {couch_httpd_external, handle_external_req, <<"fti">>}
-```
-
 Add a design document to couchdb that hooks up to couchdb-lucene and indexes text. The easiest way
 is using Futon (http://127.0.0.1:5984/_utils). Select the database (store), select
 "design documents" in the drop down. Create a document and name it "_design/lucene". Add a field
@@ -189,12 +168,23 @@ mkdir db
 django syncdb
 ```
 
-Start up the server
--------------------
+Supervisor
+----------
+
+To start supervisor, this will also start the applications.
 
 ```bash
-django runserver
+supervisord
 ```
+
+To check the status of the applications
+
+```bash
+supervisorctl status
+```
+
+You can also stop and start the applications with supervisorctl.
+
 
 Running the test suite
 ----------------------
