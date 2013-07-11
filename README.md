@@ -17,9 +17,11 @@ git config --global user.name "name in quotes"
 Download buildout
 -----------------
 
+Change akorn-site here if you want to set up in a different folder than <akorn-site>
+
 ```bash
-mkdir -p ~/sites/<my_test_instance>
-cd ~/sites/<my_test_instance>
+mkdir -p ~/sites/akorn-site
+cd ~/sites/akorn-site
 git clone https://github.com/oakling/akorn.buildout.git ./
 ```
 
@@ -44,12 +46,14 @@ sudo apt-get install $(cat ubuntu_requirements)
 Install Python
 --------------
 
+Change akorn here, if you are installing as a different user
+
 ```bash
 cd ~/Downloads
 wget http://www.python.org/ftp/python/2.7.3/Python-2.7.3.tgz
 tar zxfv Python-2.7.3.tgz
 cd Python-2.7.3
-./configure --prefix=/home/<username>/python/2.7.3
+./configure --prefix=/home/akorn/python/2.7.3
 make
 make install
 cd ..
