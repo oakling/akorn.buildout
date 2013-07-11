@@ -77,9 +77,9 @@ Write the buildout default file
 -------------------------------
 ```bash
 echo "[buildout]
-eggs-directory = /home/<username>/.buildout/eggs
-download-cache = /home/<username>/.buildout/downloads
-extends-cache = /home/<username>/.buildout/extends" >> ~/.buildout/default.cfg
+eggs-directory = /home/akorn/.buildout/eggs
+download-cache = /home/akorn/.buildout/downloads
+extends-cache = /home/akorn/.buildout/extends" >> ~/.buildout/default.cfg
 ```
 
 Create A VirtualEnv
@@ -88,7 +88,7 @@ Create A VirtualEnv
 Change to the right directory first
 
 ```bash
-cd ~/sites/<my_test_instance>
+cd ~/sites/akorn-site
 ```
 
 ```bash
