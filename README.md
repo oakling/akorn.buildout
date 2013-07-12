@@ -106,12 +106,17 @@ Run the buildout
 buildout -c development.cfg
 ```
 
+Start the services
+------------------
+
+```bash
+supervisord
+```
+
 Setup the Couch DB
 ------------------
 
 ```bash
-sudo update-rc.d couchdb enable
-sudo service couchdb start
 curl -X PUT http://localhost:5984/journals
 curl -X PUT http://localhost:5984/store
 cd src/akorn_search/akorn_search/dumps
@@ -143,7 +148,8 @@ is using Futon (http://127.0.0.1:5984/_utils). Select the database (store), sele
 
 Make sure the design document is saved and restart the database:
 ```bash
-sudo service couchdb restart
+supervisorctl stop all
+supervisorctl start all
 ```
 
 Edit the DAEMON variable in the supplied init script to point to your
