@@ -170,10 +170,8 @@ Setup the Sqlite DB
 
 You will be asked to create a super user when you first run syncdb. This is the user you can then log into the django admin with.
 
-**TODO: Clariy path required**
-
 ```bash
-cd ..
+cd src/akorn_search/akorn_search
 mkdir db
 django syncdb
 ```
