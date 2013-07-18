@@ -106,12 +106,17 @@ Run the buildout
 buildout -c development.cfg
 ```
 
+Start the services
+------------------
+
+```bash
+supervisord
+```
+
 Setup the Couch DB
 ------------------
 
 ```bash
-sudo update-rc.d couchdb enable
-sudo service couchdb start
 curl -X PUT http://localhost:5984/journals
 curl -X PUT http://localhost:5984/store
 cd src/akorn_search/akorn_search/dumps
@@ -143,20 +148,8 @@ is using Futon (http://127.0.0.1:5984/_utils). Select the database (store), sele
 
 Make sure the design document is saved and restart the database:
 ```bash
-sudo service couchdb restart
-```
-
-Edit the DAEMON variable in the supplied init script to point to your
-installation directory, e.g. (DAEMON=/opt/couchdb-lucene/bin/run):
-```bash
-sudo vim /opt/couchdb-lucene/tools/etc/init.d/couchdb-lucene/couchdb-lucene
-```
-
-Copy init script, start couchdb-lucene, and then ensure it starts up on reboot: 
-```bash
-sudo ln -s /opt/couchdb-lucene/tools/etc/init.d/couchdb-lucene/couchdb-lucene /etc/init.d/
-sudo service couchdb-lucene start
-sudo update-rc.d -f couchdb-lucene defaults
+supervisorctl stop all
+supervisorctl start all
 ```
 
 Setup the Sqlite DB
@@ -164,10 +157,8 @@ Setup the Sqlite DB
 
 You will be asked to create a super user when you first run syncdb. This is the user you can then log into the django admin with.
 
-**TODO: Clariy path required**
-
 ```bash
-cd ..
+cd src/akorn_search/akorn_search
 mkdir db
 django syncdb
 ```
