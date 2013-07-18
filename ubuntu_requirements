@@ -17,3 +17,11 @@ libnspr4-dev
 libbz2-dev
 libmozjs-dev
 libicu-dev
+# Required by Rabbit
+pkg-config
+# Required by couchdb-lucene
+zip
+# Provides add-apt-repository
+python-software-properties
+# Jazzes ipython up
+ncurses-dev
