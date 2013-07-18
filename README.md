@@ -152,19 +152,6 @@ supervisorctl stop all
 supervisorctl start all
 ```
 
-Edit the DAEMON variable in the supplied init script to point to your
-installation directory, e.g. (DAEMON=/opt/couchdb-lucene/bin/run):
-```bash
-sudo vim /opt/couchdb-lucene/tools/etc/init.d/couchdb-lucene/couchdb-lucene
-```
-
-Copy init script, start couchdb-lucene, and then ensure it starts up on reboot: 
-```bash
-sudo ln -s /opt/couchdb-lucene/tools/etc/init.d/couchdb-lucene/couchdb-lucene /etc/init.d/
-sudo service couchdb-lucene start
-sudo update-rc.d -f couchdb-lucene defaults
-```
-
 Setup the Sqlite DB
 -------------------
 
