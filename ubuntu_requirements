@@ -1,3 +1,6 @@
+openssl
+libpcre3-dev
+zlib1g-dev
 openssh-server
 openssh-client
 python-setuptools
