@@ -24,3 +24,5 @@ pkg-config
 zip
 python-software-properties
 ncurses-dev
+libsasl2-dev
+libmemcached-dev
