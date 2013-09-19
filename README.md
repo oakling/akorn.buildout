@@ -180,6 +180,11 @@ supervisorctl status
 
 You can also stop and start the applications with supervisorctl.
 
+To stop supervisor completely
+
+```bash
+supervisorctl shutdown
+```
 
 Running the test suite
 ----------------------
