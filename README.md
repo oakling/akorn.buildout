@@ -124,6 +124,15 @@ couchdb-load --input=journals.couchdump http://localhost:5984/journals
 couchdb-load --input=store.couchdump http://localhost:5984/store
 ```
 
+Setup RabbitMQ
+--------------
+
+```bash
+rabbitmqctl add_user akorn akorn
+rabbitmqctl add_vhost myvhost
+rabbitmqctl set_permissions -p myvhost akorn ".*" ".*" ".*"
+```
+
 Setup couchdb-lucene
 --------------------
 
