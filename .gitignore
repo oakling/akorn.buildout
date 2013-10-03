@@ -24,3 +24,5 @@ var
 # mac files
 .DS_Store
 
+# ide files
+.idea
