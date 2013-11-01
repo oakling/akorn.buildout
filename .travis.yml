@@ -9,3 +9,5 @@ install:
   - buildout -c development.cfg
 script:
   - bin/nose akorn.scrapers
+  - bin/nose akorn.celery
+  - bin/django test search
