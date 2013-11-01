@@ -10,4 +10,4 @@ install:
 script:
   - bin/nose akorn.scrapers
   - bin/nose akorn.celery
-  - bin/django test search
+#  - bin/django test search
