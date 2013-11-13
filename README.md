@@ -25,6 +25,13 @@ cd ~/sites/akorn-site
 git clone https://github.com/oakling/akorn.buildout.git ./
 ```
 
+Setup server
+------------
+
+```bash
+sudo apt-get install $(cat ubuntu_requirements)
+```
+
 Install newer version of java
 -----------------------------
 
@@ -35,13 +42,6 @@ sudo apt-get install oracle-java7-installer
 ```
 
 It will ask you to accept the license
-
-Setup server
-------------
-
-```bash
-sudo apt-get install $(cat ubuntu_requirements)
-```
 
 Install Python
 --------------
