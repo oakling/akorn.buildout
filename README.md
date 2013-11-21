@@ -35,9 +35,17 @@ sudo apt-get install $(cat ubuntu_requirements)
 Install newer version of java
 -----------------------------
 
+These commands need to be run separately, as console response is required.
+
 ```bash
 sudo add-apt-repository ppa:webupd8team/java
+```
+
+```bash
 sudo apt-get update
+```
+
+```bash
 sudo apt-get install oracle-java7-installer
 ```
 
