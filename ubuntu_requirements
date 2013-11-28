@@ -15,7 +15,7 @@ erlang-src
 libsqlite3-dev
 git
 curl
-maven2
+maven
 libnspr4-dev
 libbz2-dev
 libicu-dev
