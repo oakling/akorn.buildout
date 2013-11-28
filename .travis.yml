@@ -1,6 +1,4 @@
 language: python
-env:
-  - M2_HOME=/usr/share/maven
 python:
   - "2.7"
 jdk:
