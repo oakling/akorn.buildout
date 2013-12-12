@@ -7,15 +7,16 @@ buildout.cfg
 README.rst
 
 # ignore the instance folders
-bin
-build
-develop-eggs
-eggs
-include
-lib
-parts
-src
-var
+bin/
+build/
+develop-eggs/
+eggs/
+etc/
+include/
+lib/
+parts/
+src/
+var/
 
 # ignore the buildout architecture
 .installed.cfg
