@@ -67,7 +67,8 @@ make install
 cd ..
 wget http://python-distribute.org/distribute_setup.py
 ~/python/2.7.3/bin/python distribute_setup.py
-~/python/2.7.3/bin/easy_install virtualenv
+~/python/2.7.3/bin/easy_install pip
+~/python/2.7.3/bin/pip install virtualenv
 ```
 
 Setup the buildout cache
