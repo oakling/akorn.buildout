@@ -115,6 +115,25 @@ Run the buildout
 buildout -c development.cfg
 ```
 
+Setup the Sqlite DB
+-------------------
+
+You will be asked to create a super user when you first run syncdb. This is the user you can then log into the django admin with.
+
+```bash
+cd ~/sites/akorn-site/src/akorn_search/akorn_search
+mkdir db
+django syncdb
+```
+
+Build the static pages
+----------------------
+
+```bash
+cd ~/sites/akorn-site/
+django collectstatic
+```
+
 Start the services
 ------------------
 
@@ -170,16 +189,6 @@ supervisorctl stop all
 supervisorctl start all
 ```
 
-Setup the Sqlite DB
--------------------
-
-You will be asked to create a super user when you first run syncdb. This is the user you can then log into the django admin with.
-
-```bash
-cd ~/sites/akorn-site/src/akorn_search/akorn_search
-mkdir db
-django syncdb
-```
 
 Supervisor
 ----------
