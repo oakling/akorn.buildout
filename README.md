@@ -128,7 +128,7 @@ Setup the Couch DB
 ```bash
 curl -X PUT http://localhost:5984/journals
 curl -X PUT http://localhost:5984/store
-cd src/akorn_search/akorn_search/dumps
+cd ~/sites/akorn-site/src/akorn_search/akorn_search/dumps
 couchdb-load --input=journals.couchdump http://localhost:5984/journals
 couchdb-load --input=store.couchdump http://localhost:5984/store
 ```
@@ -176,7 +176,7 @@ Setup the Sqlite DB
 You will be asked to create a super user when you first run syncdb. This is the user you can then log into the django admin with.
 
 ```bash
-cd src/akorn_search/akorn_search
+cd ~/sites/akorn-site/src/akorn_search/akorn_search
 mkdir db
 django syncdb
 ```
