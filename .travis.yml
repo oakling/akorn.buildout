@@ -4,6 +4,7 @@ python:
 jdk:
   - oraclejdk7
 before_install:
+  - sudo apt-get update
   - sudo apt-get install $(cat ubuntu_requirements)
 install:
   - pip install zc.buildout
