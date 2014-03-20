@@ -199,6 +199,8 @@ To start supervisor, this will also start the applications.
 supervisord
 ```
 
+(use sudo on production to enable use of port 80)
+
 To check the status of the applications
 
 ```bash
