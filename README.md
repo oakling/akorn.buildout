@@ -285,3 +285,27 @@ ssh ubuntu@celery1.private
 sudo service celeryd restart
 ```
 _Note: The chained SSH commands are to avoid having to setup 3 shared SSH keys._
+
+Supervisor on Production
+------------------------
+
+Add a file in /etc/init called supervisord.conf
+
+```bash
+# supervisord
+
+description       supervisord
+
+start on runlevel [2345]
+stop on runlevel [!2345]
+
+expect fork
+respawn
+
+exec /home/akorn/sites/akorn-site/bin/supervisord
+```
+
+Theoretically this should run supervisord with root privileges,
+so we can start ngingx on port 80. However, log files in the virtualenv
+are owned by root and only two of the services actually start.
+
