@@ -58,7 +58,7 @@ Change akorn here, if you are installing as a different user
 
 ```bash
 cd ~/Downloads
-wget http://www.python.org/ftp/python/2.7.3/Python-2.7.8.tgz
+wget http://www.python.org/ftp/python/2.7.8/Python-2.7.8.tgz
 tar zxfv Python-2.7.8.tgz
 cd Python-2.7.8
 ./configure --prefix=/home/akorn/python/2.7.8
