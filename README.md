@@ -101,7 +101,7 @@ cd ~/sites/akorn-site
 ```
 
 ```bash
-~/python/2.7.3/bin/virtualenv .
+~/python/2.7.8/bin/virtualenv .
 source bin/activate
 pip install zc.buildout
 pip install distribute
