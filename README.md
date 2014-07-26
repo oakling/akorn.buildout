@@ -58,17 +58,17 @@ Change akorn here, if you are installing as a different user
 
 ```bash
 cd ~/Downloads
-wget http://www.python.org/ftp/python/2.7.3/Python-2.7.3.tgz
-tar zxfv Python-2.7.3.tgz
-cd Python-2.7.3
-./configure --prefix=/home/akorn/python/2.7.3
+wget http://www.python.org/ftp/python/2.7.3/Python-2.7.8.tgz
+tar zxfv Python-2.7.8.tgz
+cd Python-2.7.8
+./configure --prefix=/home/akorn/python/2.7.8
 make
 make install
 cd ..
 wget http://python-distribute.org/distribute_setup.py
-~/python/2.7.3/bin/python distribute_setup.py
-~/python/2.7.3/bin/easy_install pip
-~/python/2.7.3/bin/pip install virtualenv
+~/python/2.7.8/bin/python distribute_setup.py
+~/python/2.7.8/bin/easy_install pip
+~/python/2.7.8/bin/pip install virtualenv
 ```
 
 Setup the buildout cache
